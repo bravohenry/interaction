@@ -1,0 +1,18 @@
+from __future__ import annotations
+
+from fastapi import APIRouter
+
+from .agents import router as agents_router
+from .chat import router as chat_router
+from .gmail import router as gmail_router
+from .messages import router as messages_router
+from .meta import router as meta_router
+
+api_router = APIRouter(prefix="/api/v1")
+api_router.include_router(meta_router)
+api_router.include_router(chat_router)
+api_router.include_router(gmail_router)
+api_router.include_router(agents_router)
+api_router.include_router(messages_router)
+
+__all__ = ["api_router"]

@@ -1,0 +1,46 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "extends": ["ultracite"],
+  "css": {
+    "formatter": {
+      "enabled": false
+    },
+    "linter": {
+      "enabled": false
+    }
+  },
+  "linter": {
+    "rules": {
+      "recommended": true,
+      "style": {
+        "noExportedImports": "off",
+        "useBlockStatements": "off",
+        "useNamingConvention": "off",
+        "noMagicNumbers": "off",
+        "noNestedTernary": "off"
+      },
+      "performance": {
+        "noNamespaceImport": "off",
+        "noBarrelFile": "off"
+      },
+      "suspicious": {
+        "noConsole": "off",
+        "useAwait": "off"
+      },
+      "a11y": {
+        "noSvgWithoutTitle": "off"
+      },
+
+      "nursery": {
+        "noShadow": "off",
+        "useMaxParams": "off",
+        "useConsistentTypeDefinitions": {
+          "level": "warn",
+          "options": {
+            "style": "interface"
+          }
+        }
+      }
+    }
+  }
+}
