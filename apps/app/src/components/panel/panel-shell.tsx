@@ -13,7 +13,7 @@ export function PanelShell() {
           fill
           priority
           sizes="100vw"
-          src="/evening.jpeg"
+          src="/evening.png"
         />
         <div className="absolute inset-0 bg-linear-to-b from-black/5 via-black/10 to-black/20" />
       </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useSession } from "~/lib/auth-client";
+import { useSession } from "~/lib/hooks/use-session";
 import { getGreeting, getUserDisplayName } from "~/server/utils/time";
 
 export function HomeGreeting() {
@@ -14,7 +14,7 @@ export function HomeGreeting() {
         <h1 className="mb-1 font-semibold text-3xl/9 text-gray-800 tracking-tight">
           {greeting}, {userName}
         </h1>
-        <p className="text-gray-400 text-sm/6">30°C and clear sky</p>
+        <p className="text-gray-400 text-sm/6">How are you feeling today?</p>
       </div>
     </div>
   );

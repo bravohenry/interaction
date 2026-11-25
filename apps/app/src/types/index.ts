@@ -4,9 +4,7 @@ import type { Auth } from "~/server/lib/auth";
 export type PanelView =
   | "home"
   | "chat"
-  | "settings"
-  | "connections"
-  | "account-detail";
+  | "settings";
 
 export interface PanelProps {
   initialView?: PanelView;

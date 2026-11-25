@@ -25,12 +25,12 @@ export function Screen({
     <div className="flex h-full w-full flex-grow flex-col">
       {/* Header */}
       <div
-        className={cn(
+          className={cn(
           "relative sticky top-0 z-10 mx-auto flex h-12 w-full shrink-0 items-center overflow-hidden border-b p-4",
-          "border-white/40 dark:border-white/10",
+          "border-border/30",
           headerVariant === "solid"
-            ? "bg-background"
-            : "bg-linear-to-b from-white/90 via-white/60 to-transparent backdrop-blur-sm backdrop-brightness-95 backdrop-saturate-150 dark:from-slate-900/80 dark:via-slate-900/55 dark:to-transparent"
+            ? "bg-card/95 backdrop-blur-sm"
+            : "bg-linear-to-b from-card/95 via-card/80 to-transparent backdrop-blur-md backdrop-saturate-110 dark:from-card/90 dark:via-card/70 dark:to-transparent"
         )}
       >
         <div className="w-10 flex-shrink-0">

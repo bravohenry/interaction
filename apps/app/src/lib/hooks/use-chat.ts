@@ -37,8 +37,12 @@ export function useChat() {
       staleTime: 0,
       gcTime: 30_000,
       retry: false,
-      // Always poll - multi-agent system can send messages at any time
-      refetchInterval: 1000,
+      // 若为 demo 线程（或服务器降级到 demo-thread），关闭轮询，避免服务器空列表覆盖本地消息
+      refetchInterval: (query) => {
+        const d = query.state.data as ChatUpdatesResponse | undefined;
+        if (d?.threadId === "demo-thread") return false;
+        return 1000;
+      },
       structuralSharing: true,
     })
   );
@@ -210,6 +214,38 @@ export function useChat() {
             ),
           };
         });
+
+        // 如果服务器直接返回助手消息（demo/无数据库时），直接追加
+        if (result.assistant) {
+          const assistantId = generateId();
+          qc.setQueryData<ChatUpdatesResponse>(ctx.fullKey, (old) => {
+            if (!old) return old;
+            return {
+              ...old,
+              messages: [
+                ...old.messages,
+                {
+                  id: assistantId,
+                  role: "assistant",
+                  content: result.assistant,
+                  createdAt: new Date(),
+                  updatedAt: new Date(),
+                  runId: result.runId,
+                  userId: "",
+                  threadId: result.threadId,
+                  clientMessageId: undefined,
+                  replyTo: null,
+                  status: "final" as const,
+                  stepId: null,
+                  reactions: [],
+                },
+              ],
+            };
+          });
+
+          // demo 场景下不触发后端刷新，避免空列表覆盖本地消息
+          return;
+        }
 
         // Trigger refetch after runId is set in cache
         qc.invalidateQueries({ queryKey: baseKey });

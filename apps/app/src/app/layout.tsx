@@ -8,9 +8,9 @@ const inter = Inter({ subsets: ["latin"], variable: "--inter" });
 const geist_mono = Geist_Mono({ subsets: ["latin"], variable: "--geist-mono" });
 
 export const metadata: Metadata = {
-  title: "OpenPoke - AI Agent Chat",
+  title: "Carol - Your Health Companion",
   description:
-    "Your AI-powered personal assistant for email triage, smart reminders, and task delegation.",
+    "An AI assistant focused on emotional wellness and health insurance navigation, here to support your health journey.",
 };
 
 export default function RootLayout({

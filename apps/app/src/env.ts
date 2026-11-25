@@ -12,21 +12,23 @@ export const env = createEnv({
     DATABASE_USERNAME: z.string().min(1),
     DATABASE_PASSWORD: z.string().min(1),
 
-    OPENROUTER_API_KEY: z.string().min(1),
-    COMPOSIO_API_KEY: z.string().min(1),
-    COMPOSIO_GMAIL_AUTH_CONFIG_ID: z.string().min(1),
+    GEMINI_API_KEY: z.string().min(1).optional(),
+
+    OPENROUTER_API_KEY: z.string().min(1).optional(),
+    COMPOSIO_API_KEY: z.string().min(1).optional(),
+    COMPOSIO_GMAIL_AUTH_CONFIG_ID: z.string().min(1).optional(),
 
     GOOGLE_CLIENT_ID: z.string().min(1),
     GOOGLE_CLIENT_SECRET: z.string().min(1),
 
-    PY_SERVICE_TOKEN: z.string().min(1),
+    PY_SERVICE_TOKEN: z.string().min(1).optional(),
 
-    UPSTASH_REDIS_REST_URL: z.url(),
-    UPSTASH_REDIS_REST_TOKEN: z.string().min(1),
+    UPSTASH_REDIS_REST_URL: z.url().optional(),
+    UPSTASH_REDIS_REST_TOKEN: z.string().min(1).optional(),
   },
   client: {
     NEXT_PUBLIC_SERVER_URL: z.url(),
-    NEXT_PUBLIC_PY_BACKEND_URL: z.url(),
+    NEXT_PUBLIC_PY_BACKEND_URL: z.url().optional(),
   },
   experimental__runtimeEnv: {
     // Client variables from process.env (Next.js)

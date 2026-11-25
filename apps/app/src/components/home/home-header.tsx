@@ -2,7 +2,7 @@
 
 import { Palmtree } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
-import { useSession } from "~/lib/auth-client";
+import { useSession } from "~/lib/hooks/use-session";
 import { SettingsButton } from "./settings-button";
 
 export function HomeHeader() {

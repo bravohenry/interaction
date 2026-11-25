@@ -24,7 +24,7 @@ export function TextPokeButton() {
               </div>
               <div className="flex min-w-0 flex-1 flex-col">
                 <span className="break-words text-left font-medium text-gray-800 text-sm">
-                  Text Poke
+                  Chat with Carol
                 </span>
               </div>
             </div>

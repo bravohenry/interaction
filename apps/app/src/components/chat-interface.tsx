@@ -87,7 +87,7 @@ export function ChatInterface() {
         <StickToBottom.Content className="h-full overflow-y-auto px-4 pt-2 pb-3">
           {messages.length === 0 && (
             <div className="py-10 text-center text-muted-foreground text-sm">
-              Start a conversation
+              Share how you're feeling or ask about your health insurance
             </div>
           )}
 

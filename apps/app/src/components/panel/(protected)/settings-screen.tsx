@@ -1,7 +1,7 @@
 "use client";
 
 import { useMutation } from "@tanstack/react-query";
-import { BadgeCheck, ChevronRight, LogOut, Trash2, User } from "lucide-react";
+import { BadgeCheck, LogOut, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 import { Screen } from "~/components/screen";
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
@@ -15,7 +15,8 @@ import {
   ItemTitle,
 } from "~/components/ui/item";
 import { useNavigation } from "~/lib/atoms/navigation";
-import { authClient, useSession } from "~/lib/auth-client";
+import { authClient } from "~/lib/auth-client";
+import { useSession } from "~/lib/hooks/use-session";
 import { useTRPC } from "~/trpc/react";
 
 export function SettingsScreen() {
@@ -36,7 +37,15 @@ export function SettingsScreen() {
 
   const { mutate: signOut } = useMutation({
     mutationKey: ["signOut"],
-    mutationFn: async () => await authClient.signOut(),
+    mutationFn: async () => {
+      // 清除 mock session（如果存在）
+      if (typeof window !== "undefined") {
+        localStorage.removeItem("carol_mock_session");
+        window.dispatchEvent(new Event("carol:mock-session-update"));
+      }
+      // 调用真实的登出（如果使用的是真实 session）
+      await authClient.signOut();
+    },
   });
 
   if (!session?.user) {
@@ -93,23 +102,6 @@ export function SettingsScreen() {
           <div className="flex flex-col items-start justify-start gap-9 px-4 py-6">
             {/* Main Settings Group */}
             <ItemGroup>
-              <Item asChild>
-                <button onClick={() => setView("connections")} type="button">
-                  <ItemMedia>
-                    <User className="text-gray-600" strokeWidth={2} />
-                  </ItemMedia>
-                  <ItemContent>
-                    <ItemTitle className="text-gray-900">Connections</ItemTitle>
-                  </ItemContent>
-                  <ItemActions>
-                    <ChevronRight
-                      className="size-4 text-gray-400"
-                      strokeWidth={2}
-                    />
-                  </ItemActions>
-                </button>
-              </Item>
-              <ItemSeparator />
               <Item asChild variant="destructive">
                 <button
                   disabled={clearHistoryMutation.isPending}
@@ -123,7 +115,7 @@ export function SettingsScreen() {
                     <ItemTitle>
                       {clearHistoryMutation.isPending
                         ? "Clearing..."
-                        : "Clear History"}
+                        : "Clear Chat History"}
                     </ItemTitle>
                   </ItemContent>
                 </button>

@@ -8,15 +8,15 @@
     "start": "turbo run start",
     "clean": "git clean -xdf node_modules",
     "clean:workspaces": "turbo run clean",
-    "format": "turbo -F @openpoke/server format && pnpx ultracite fix .",
-    "lint": "turbo -F @openpoke/server lint && pnpx ultracite check .",
+    "format": "turbo -F @carol/server format && pnpx ultracite fix .",
+    "lint": "turbo -F @carol/server lint && pnpx ultracite check .",
     "typecheck": "turbo run typecheck",
     "lint:ws": "pnpm dlx sherif@latest",
     "postinstall": "pnpm lint:ws",
-    "db:push": "turbo -F @openpoke/app push",
-    "db:studio": "turbo -F @openpoke/app studio",
-    "db:generate": "turbo -F @openpoke/app generate",
-    "db:migrate": "turbo -F @openpoke/app migrate"
+    "db:push": "turbo -F @carol/app push",
+    "db:studio": "turbo -F @carol/app studio",
+    "db:generate": "turbo -F @carol/app generate",
+    "db:migrate": "turbo -F @carol/app migrate"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.2.5",

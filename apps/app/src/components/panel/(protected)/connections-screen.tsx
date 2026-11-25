@@ -19,7 +19,7 @@ import { useNavigation } from "~/lib/atoms/navigation";
 import { useTRPC } from "~/trpc/react";
 
 export function ConnectionsScreen() {
-  const { navigateToAccountDetail } = useNavigation();
+  const { setView } = useNavigation();
   const trpc = useTRPC();
   const queryClient = useQueryClient();
   const { data, isLoading } = useQuery(
@@ -118,9 +118,9 @@ export function ConnectionsScreen() {
                   <Item
                     asChild
                     key={account.id}
-                    onClick={() =>
-                      navigateToAccountDetail(account.id, account.email)
-                    }
+                    onClick={() => {
+                      // Account detail functionality removed
+                    }}
                   >
                     <button type="button">
                       <ItemMedia variant="image">

@@ -1,5 +1,5 @@
 {
-  "name": "@openpoke/app",
+  "name": "@carol/app",
   "version": "0.1.0",
   "type": "module",
   "private": true,
@@ -15,6 +15,7 @@
     "with-env": "dotenv -e ../../.env"
   },
   "dependencies": {
+    "@ai-sdk/google": "^2.0.45",
     "@ai-sdk/openai": "^2.0.50",
     "@ai-sdk/react": "^2.0.68",
     "@base-ui-components/react": "1.0.0-beta.3",
